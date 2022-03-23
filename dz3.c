@@ -96,7 +96,8 @@ int main()
 	j = 0; k = 0;
 	int stop = 0;
 	int nowr; // don't write vertices number to the array b
-	do
+	int cyc = n;
+        do
 	{
 		if (stop == 0)
 			for( i = 0; i < n; i++ )
@@ -118,9 +119,12 @@ int main()
 					j = i ;
 				}
 			}
-		bfull = stop;
+                cyc--;
 		if ( k != n && nowr ) j++;
-	} while ( !stop_check && !stop_check1 && !stop );
+	} while ( !stop_check && !stop_check1 && !stop && (cyc != 0));
+        int mnoc = 0;
+        if ( k != n ) mnoc = 1;
+        bfull = (mnoc == 0) && stop;
 	printf("Connected vertices of the graph:");
 	for( num = 0; num < n; num++ ) printf("%3d", b[num]);
 	printf("\n");
